@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ami | Computer Engineering Portfolio</title>
+<meta name="description" content="Portfolio of Ami, BS Computer Engineering student at Mapúa University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6FAF4; --mint:#DCEEDF; --sage:#B9D9C2; --leaf:#4E8F68; --forest:#1E3B2C; --ink:#243A2E; --muted:#4F6659; --line:#C5DCCB;
+  --display:"Bricolage Grotesque","Trebuchet MS",sans-serif; --body:"Figtree","Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.65;font-size:1.05rem}
+a{color:var(--forest)}
+:focus-visible{outline:3px solid var(--leaf);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);color:var(--forest);line-height:1.1}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:20px}
+h3{font-size:1.25rem;margin-bottom:6px}
+p{max-width:68ch}
+section{padding:72px 0}
+
+/* nav */
+header{position:sticky;top:0;z-index:10;background:rgba(246,250,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:700;font-size:1.25rem;text-decoration:none}
+nav ul{list-style:none;padding:0;display:flex;gap:4px;flex-wrap:wrap}
+nav ul a{display:block;padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:500;font-size:.98rem;color:var(--muted)}
+nav ul a:hover{background:var(--mint);color:var(--forest)}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--mint),var(--paper));padding:56px 0 24px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);margin-bottom:14px}
+.tagline{font-size:1.25rem;color:var(--muted);margin-bottom:26px}
+.intro{margin-bottom:26px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:12px;font-weight:600;text-decoration:none;border:2px solid var(--forest)}
+.btn.primary{background:var(--forest);color:#fff}
+.btn.primary:hover{background:#2b5640}
+.btn.ghost:hover{background:var(--mint)}
+.avatar{width:min(300px,70%);aspect-ratio:1;margin:0 auto;display:block;border-radius:46% 54% 50% 50%/52% 46% 54% 48%;background:var(--sage);border:4px solid #fff;box-shadow:0 0 0 2px var(--leaf)}
+.pulse{width:100%;height:auto;display:block;margin-top:36px}
+.pulse path{fill:none;stroke:var(--leaf);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.pulse .trace{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s ease-out .3s forwards}
+.pulse .node{fill:var(--forest);opacity:0;animation:pop .4s ease-out 3.2s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px}
+.about-grid p+p{margin-top:14px}
+.facts{background:var(--mint);border-radius:18px;padding:24px}
+.facts h3{margin-bottom:12px}
+.facts ul{padding-left:18px;color:var(--muted)}
+.facts li+li{margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin-top:14px}
+.chips li{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.92rem;color:var(--forest)}
+
+.about-grid ul.list{padding-left:20px;color:var(--muted);margin-top:8px}
+.about-grid ul.list li+li{margin-top:6px}
+.about-grid h3{margin-top:26px}
+/* coursework */
+.courses{display:grid;gap:0;border-top:1px solid var(--line)}
+.course{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.code{font-family:var(--display);font-weight:700;color:var(--leaf);font-size:1.15rem}
+.course p{color:var(--muted)}
+.course .skills{margin-top:6px;font-size:.95rem}
+.course .skills b{color:var(--forest);font-weight:600}
+.course .view{display:inline-block;margin-top:12px;padding:8px 16px;border-radius:10px;border:2px solid var(--forest);font-weight:600;text-decoration:none;font-size:.95rem}
+.course .view:hover{background:var(--sage)}
+
+/* projects */
+.alt{background:var(--mint)}
+.project{display:grid;grid-template-columns:260px 1fr;gap:28px;background:var(--paper);border-radius:20px;padding:24px;margin-bottom:20px;border:1px solid var(--line)}
+.project:nth-child(even){grid-template-columns:1fr 260px}
+.project:nth-child(even) .shot{order:2}
+.shot{aspect-ratio:4/3;border-radius:14px;background:var(--sage);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover}
+.project h4{font-size:1rem;margin:12px 0 4px;color:var(--forest)}
+.project ul.plain{padding-left:18px;color:var(--muted)}
+
+/* journey */
+.journey{max-width:760px}
+.journey h3{margin-top:26px}
+.journey p{color:var(--ink)}
+.video{margin-top:26px;aspect-ratio:16/9;border-radius:16px;border:2px dashed var(--leaf);display:flex;align-items:center;justify-content:center;color:var(--muted);text-align:center;padding:16px}
+
+/* contact */
+.contact-list{list-style:none;padding:0;display:grid;gap:10px;margin-top:18px}
+.contact-list a{font-weight:600}
+footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+
+@media (max-width:820px){
+  .hero-grid,.about-grid,.project,.project:nth-child(even){grid-template-columns:1fr}
+  .project:nth-child(even) .shot{order:0}
+  .course{grid-template-columns:1fr;gap:4px}
+  .avatar{width:200px}
+  section{padding:52px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .pulse .trace{animation:none;stroke-dashoffset:0}
+  .pulse .node{animation:none;opacity:1}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="#home">Ami</a>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About me</a></li>
+        <li><a href="#coursework">Coursework</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#journey">Personal journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Hi, I'm Ami.</h1>
+        <p class="tagline">Building technology that helps people.</p>
+        <p class="intro">I'm Amirah Liane Oliva, or Ami, a first-year BS Computer Engineering student at Mapúa University. Learning how things work, how to build them, and seeing them used in real life inspires me to keep going on this path. One day, I want to contribute to my community with my own creations.</p>
+        <div class="btns">
+          <a class="btn primary" href="#projects">See my projects</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <!-- Replace this block with your photo: <img class="avatar" src="photo.jpg" alt="Photo of Ami smiling at the camera"> -->
+      <div class="avatar" role="img" aria-label="Placeholder for a professional photo or avatar of Ami"></div>
+    </div>
+
+    <svg class="pulse" viewBox="0 0 1000 120" role="img" aria-label="A heartbeat line that turns into a circuit trace, linking biomedical signals and computer engineering">
+      <path class="trace" d="M0 70 H180 L205 70 L225 25 L250 105 L272 70 H340 L360 62 L380 70 H470 H520 V40 H580 V90 H640 V60 H700 H740 V90 H800 V60 H860 H940"/>
+      <circle class="node" cx="520" cy="70" r="6"/>
+      <circle class="node" cx="740" cy="70" r="6"/>
+      <circle class="node" cx="940" cy="60" r="6"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <h2>About me</h2>
+      <p>I became interested in robotics and technology in 9th grade. When I learned that Senior High School would have a Robotics course, I was excited and eager. As I got the hang of it, I wanted to use what I knew to help people in need, whether through telemedicine, alert systems, or anything else that could help.</p>
+      <p>Senior High School helped me make a firm decision: I want to build systems and technology that help people, and I want to be an engineer.</p>
+      <p>I grew up in a family in healthcare. I once planned to study pharmacy and become a surgeon, but that spark faded and I settled on computer engineering. My passion to help stayed, and I now use technology to make healthcare more accessible.</p>
+      <h3>Achievements</h3>
+      <ul class="list">
+        <li>Graduated Senior High School with Honors (2026)</li>
+        <li>Best Research in Grade 12, for the PulsePing ECG study</li>
+        <li>Top 12 Best Capstone, for the Earthquake Alert and Early Warning System</li>
+        <li>Best in Work Immersion</li>
+        <li>Grade 12 class president</li>
+      </ul>
+      <h3>Looking ahead</h3>
+      <p>After I graduate, I want to work on embedded, robotics, and biomedical systems that make healthcare easier to reach, and keep building things that communities can actually use.</p>
+      <ul class="chips" aria-label="Interests">
+        <li>Robotics</li><li>Embedded systems</li><li>Web development</li><li>Biomedical technology</li>
+      </ul>
+    </div>
+    <aside class="facts">
+      <h3 style="margin-top:0">Quick facts</h3>
+      <ul>
+        <li>BS Computer Engineering, Mapúa University</li>
+        <li>Based in the Philippines</li>
+        <li>Works with HTML, CSS, JavaScript, C++, Arduino, Python, and Firebase</li>
+        <li>Builds hardware prototypes and web systems</li>
+        <li>Focus: accessible healthcare technology</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- COURSEWORK -->
+<section id="coursework" class="alt">
+  <div class="wrap">
+    <h2>Coursework</h2>
+    <p style="margin-bottom:24px">Two submissions from CPE101-4, Computer Engineering as a Discipline, that shaped how I understand the program and where it can take me.</p>
+    <div class="courses">
+      <article class="course">
+        <div class="code">CPE101-4</div>
+        <div>
+          <h3>Infographic: Technical Courses (Computer Engineering core courses)</h3>
+          <p>An infographic on the core courses that build the professional foundation of a computer engineer: the discipline's identity, research and design methods, legal and ethical standards, safety practices, and project management. It also covers the skills these courses build, how they apply on the job, and the careers they lead to, from embedded systems and robotics to software and networks, AI/ML, IoT, cybersecurity, and biomedical instrumentation.</p>
+          <p class="skills"><b>Skills used:</b> research, summarizing technical information, visual design</p>
+          <a class="view" href="#">View submission</a>
+        </div>
+      </article>
+      <article class="course">
+        <div class="code">CPE101-4</div>
+        <div>
+          <h3>Reflection essay: Preparing for an Engineering Career</h3>
+          <p>An essay on moving from high school to college learning, managing time with a weekly schedule, studying with practice testing and spaced review, and why joining an engineering organization matters. It ends with a three-part action plan for college.</p>
+          <p class="skills"><b>Skills used:</b> reflection, planning, academic writing, APA citation</p>
+          <a class="view" href="#">View submission</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+
+    <article class="project">
+      <div class="shot">
+        <!-- Replace with: <img src="photo.jpg" alt="Diagram or cover page of the concept paper"> -->
+        <span aria-hidden="true">Diagram or cover page of the concept paper</span>
+      </div>
+      <div>
+        <h3>KalusuganLink: offline-first tele-vitals kit (CPE101-4, 1st year)</h3>
+        <p>A concept paper for SDG 3 (Good Health and Well-Being). It proposes a low-cost handheld kit and telemedicine app that lets barangay health workers record vital signs offline and send them to a doctor once a connection returns.</p>
+        <h4>My role</h4>
+        <p>[Your role in the group of five]</p>
+        <h4>Key features</h4>
+        <ul class="plain"><li>Reads ECG, blood oxygen, pulse, and temperature</li><li>Saves readings on the phone and syncs automatically when online</li><li>Doctor dashboard that returns advice or referrals</li><li>Prompts the health worker when a reading is dangerous</li></ul>
+        <h4>Tools and platforms</h4>
+        <ul class="chips"><li>ESP32</li><li>AD8232</li><li>MAX30102</li><li>DS18B20</li><li>Progressive web app</li><li>IndexedDB</li></ul>
+        <h4>Challenges I addressed</h4>
+        <ul class="plain"><li>Sensor accuracy, including pulse oximeter accuracy on darker skin</li><li>Power and connectivity</li><li>Adoption by health workers and data privacy</li></ul>
+      </div>
+    </article>
+    <article class="project">
+      <div class="shot">
+        <!-- Replace with: <img src="photo.jpg" alt="Photo of the PulsePing prototype showing a heart rate on its screen"> -->
+        <span aria-hidden="true">Photo of the PulsePing prototype showing a heart rate on its screen</span>
+      </div>
+      <div>
+        <h3>PulsePing: Low-cost Arduino-based ECG with real-time SMS alerts (Grade 12 research)</h3>
+        <p>A research study and prototype that compared a low-cost Arduino ECG with a CONTEC CMS 8000 portable ECG. Ten respondents rated both devices for accuracy, functionality, and user-friendliness.</p>
+        <h4>My role</h4>
+        <p>[Your role in the group of six]</p>
+        <h4>Key features</h4>
+        <ul class="plain"><li>Displays the ECG waveform and heart rate on a TFT screen</li><li>Sends an SMS alert when a reading looks abnormal</li><li>Rated Good to Excellent by users, with no significant difference from the portable ECG</li></ul>
+        <h4>Tools and platforms</h4>
+        <ul class="chips"><li>Arduino Uno</li><li>AD8232 ECG sensor</li><li>ESP-01</li><li>TFT display</li><li>Arduino IDE</li><li>Statistical tests (Shapiro-Wilk, Wilcoxon, paired t-test)</li></ul>
+      </div>
+    </article>
+    <article class="project">
+      <div class="shot">
+        <!-- Replace with: <img src="photo.jpg" alt="Photo of the earthquake alert prototype"> -->
+        <span aria-hidden="true">Photo of the earthquake alert prototype</span>
+      </div>
+      <div>
+        <h3>Earthquake Alert and Early Warning System (Grade 12 capstone)</h3>
+        <p>A capstone plan for a safety system that would detect abnormal ground vibrations and give immediate alerts through alarms, lights, and notification messages, to improve disaster preparedness. It stayed at the planning stage with no written paper, and it still placed in the top 12 [add what it was ranked among, e.g., Grade 12 capstone proposals].</p>
+        <h4>My role</h4>
+        <p>[Your role in the group]</p>
+        <h4>Key features</h4>
+        <ul class="plain"><li>Planned: detects abnormal vibrations with an accelerometer</li><li>Planned: triggers a buzzer and LEDs</li><li>Planned: shows status on an LCD</li><li>Planned: sends alerts through a GSM or Wi-Fi module</li></ul>
+        <h4>Tools and platforms</h4>
+        <ul class="chips"><li>Arduino Uno / Nano</li><li>MPU6050</li><li>Piezo buzzer</li><li>LED</li><li>LCD</li><li>GSM or Wi-Fi module</li></ul>
+      </div>
+    </article>
+    <article class="project">
+      <div class="shot">
+        <!-- Replace with: <img src="photo.jpg" alt="Photo of the Clog Alert prototype"> -->
+        <span aria-hidden="true">Photo of the Clog Alert prototype</span>
+      </div>
+      <div>
+        <h3>Clog Alert (Grade 11 capstone)</h3>
+        <p>A smart drainage system that detects blockages and helps manage minor flooding. If the water sensor sees no water flowing into the drain, the system assumes a clog and turns on a pump to send floodwater back into the drainage until the blockage can be cleared by hand. It is meant for flood-prone areas and works all year.</p>
+        <h4>My role</h4>
+        <p>[Your role in the group]</p>
+        <h4>Key features</h4>
+        <ul class="plain"><li>Water sensor near the drainage outlet</li><li>Automatic pump when a clog is detected</li><li>Planned buzzer alarm, which we could not finish because of a technical issue with the buzzer</li></ul>
+        <h4>Tools and platforms</h4>
+        <ul class="chips"><li>Arduino</li><li>Soil moisture sensor</li><li>Water pump</li></ul>
+        <h4>What I would improve</h4>
+        <ul class="plain"><li>Add a mesh filter and regular sensor maintenance to prevent false readings</li><li>Use a solar panel for continuous power</li><li>Add a rainfall sensor to avoid false clog alerts</li><li>Use a larger pump and send an alert when water exceeds pump capacity</li><li>Move the electronics to an elevated waterproof compartment, with optional Bluetooth or Wi-Fi monitoring</li></ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- PERSONAL JOURNEY -->
+<section id="journey" class="alt">
+  <div class="wrap journey">
+    <h2>Personal journey</h2>
+    <p>Studying at Mapúa is hard, and I won't pretend otherwise. I went from being an achiever in Senior High School to barely understanding simple concepts, and I'll admit I haven't always felt like myself.</p>
+    <h3>Challenges</h3>
+    <p>Courses, outputs, and understanding new concepts at a much faster pace have all been difficult. I was a grade-conscious high schooler who pushed herself to the limit until she hit a wall. In college, I picked up a mindset I never expected: "ang mahalaga, may napasa" (what matters is that something got submitted). Passing courses still matters, but I'm glad I'm no longer the person who pushes until she breaks.</p>
+    <h3>Growth</h3>
+    <p>After some time of understanding myself and cutting myself some slack, my mindset changed. What matters is that I grow, learn, and still reach my dream. Every challenge in a course or an output helps shape my future. I'll keep going through hardships in this university, and I'm willing to overcome them and learn my way around.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Want to collaborate or just say hi? Reach me here.</p>
+    <ul class="contact-list">
+      <li>Email: <a href="mailto:olivaa.ami@gmail.com">olivaa.ami@gmail.com</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/AmirahLianeOliva" target="_blank" rel="noopener">linkedin.com/in/AmirahLianeOliva</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Ami. BS Computer Engineering, Mapúa University.</div>
+</footer>
+
+</body>
+</html>
